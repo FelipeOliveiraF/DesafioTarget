@@ -30,7 +30,7 @@ class Program
 
         // Calcula o menor e o maior valor de faturamento diário
         double menorFaturamento = diasComFaturamento.Min(x => (double)x);
-        double maiorFaturamento = diasComFaturamento.Max(x => (double)x);
+        double maiorFaturamento = diasComFaturamento.Max(x => (double)x); 
 
         // Calcula a média de faturamento diário
         double mediaFaturamento = diasComFaturamento.Average(x => (double)x);
