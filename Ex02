@@ -1,0 +1,36 @@
+//Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor sempre será a soma dos 2 valores anteriores (exemplo: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...), escreva um programa na linguagem que desejar onde, informado um número, ele calcule a sequência de Fibonacci e retorne uma mensagem avisando se o número informado pertence ou não a sequência.
+
+//IMPORTANTE:
+//Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente definido no código;
+
+
+//inserir numero pra pesquisar
+
+int a = 0, atual = 1, p;
+bool flag = false;
+
+Console.Write("Insira um numéro para verificar se pertence a sequencia de fibonnaci: ");
+int numero = int.Parse(Console.ReadLine());
+
+while (atual <= numero)
+{
+    if (atual == numero)
+    {
+        flag = true;
+        
+    }
+    p = a + atual; // o proximo numero é a soma dos 2 anteriores a ele
+    a = atual; // o "primeiro" anterior passa a ser o atual
+    atual = p; //o atual numero em que o ponteiro está é o "proximo"
+
+}
+
+if (flag)
+{
+    Console.WriteLine($" {numero} pertence à sequência de Fibonacci.");
+}
+
+else
+{
+    Console.WriteLine($" {numero} NÃO pertence à sequência de Fibonacci.");
+}
