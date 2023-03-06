@@ -1,0 +1,34 @@
+/*Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+
+SP – R$67.836,43
+RJ – R$36.678,66
+MG – R$29.229,88
+ES – R$27.165,48
+Outros – R$19.849,53
+
+Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.*/
+ 
+//Faturamento como no enunciado
+double sp = 67836.43;
+double rj = 36678.66;
+double mg = 29229.88;
+double es = 27165.48;
+double outros = 19849.53;
+
+double totalfat = ( sp + rj + mg + es + outros); //somando o total 
+//Console.WriteLine(totalfat);
+
+//Calculando porcentagem
+double percentualSP = (sp / totalfat) * 100;
+double percentualRJ = (rj / totalfat) * 100;
+double percentualMG = (mg / totalfat) * 100;
+double percentualES = (es / totalfat) * 100;
+double percentualOutros = (outros / totalfat) * 100;
+
+//Exibindo na tela
+Console.WriteLine("Percentual de representação por estado:");
+Console.WriteLine($"- SP: {percentualSP.ToString("F2")}%");
+Console.WriteLine($"- RJ: {percentualRJ.ToString("F2")}%");
+Console.WriteLine($"- MG: {percentualMG.ToString("F2")}%");
+Console.WriteLine($"- ES: {percentualES.ToString("F2")}%");
+Console.WriteLine($"- Outros: {percentualOutros.ToString("F2")}%");
