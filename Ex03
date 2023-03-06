@@ -19,7 +19,7 @@ class Program
     static void Main(string[] args)
     {
         // Lê o arquivo JSON contendo o faturamento diário da distribuidora
-        string jsonString = System.IO.File.ReadAllText(@"dados.json");
+        string jsonString = System.IO.File.ReadAllText(@"dados.json");//o arquivo de dados esta na pasta Debug do projeto
         JObject json = JObject.Parse(jsonString);
 
         // Extrai os valores do faturamento diário do JSON
