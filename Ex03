@@ -1,0 +1,46 @@
+
+//3) Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:
+//• O menor valor de faturamento ocorrido em um dia do mês;
+//• O maior valor de faturamento ocorrido em um dia do mês;
+//• Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
+
+//IMPORTANTE:
+//a) Usar o json ou xml disponível como fonte dos dados do faturamento mensal;
+//b) Podem existir dias sem faturamento, como nos finais de semana e feriados. Estes dias devem ser ignorados no cálculo da média;
+
+
+
+using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;//biblioteca para auxiliar no desenvolvimento
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Lê o arquivo JSON contendo o faturamento diário da distribuidora
+        string jsonString = System.IO.File.ReadAllText(@"dados.json");
+        JObject json = JObject.Parse(jsonString);
+
+        // Extrai os valores do faturamento diário do JSON
+        JArray faturamentoDiario = (JArray)json["faturamento_diario"];
+
+        // Remove os valores de dias sem faturamento (zero)
+        JArray diasComFaturamento = new JArray(faturamentoDiario.Where(x => (double)x > 0));
+
+        // Calcula o menor e o maior valor de faturamento diário
+        double menorFaturamento = diasComFaturamento.Min(x => (double)x);
+        double maiorFaturamento = diasComFaturamento.Max(x => (double)x);
+
+        // Calcula a média de faturamento diário
+        double mediaFaturamento = diasComFaturamento.Average(x => (double)x);
+
+        // Calcula o número de dias em que o faturamento diário foi superior à média
+        int diasAcimaDaMedia = diasComFaturamento.Count(x => (double)x > mediaFaturamento);
+
+        // Imprime os resultados
+        Console.WriteLine($"Menor faturamento diário: {menorFaturamento:C}");
+        Console.WriteLine($"Maior faturamento diário: {maiorFaturamento:C}");
+        Console.WriteLine($"Número de dias acima da média: {diasAcimaDaMedia}");
+    }
+}
