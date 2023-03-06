@@ -1,0 +1,22 @@
+//5) Escreva um programa que inverta os caracteres de um string.
+
+//IMPORTANTE:
+//a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
+//b) Evite usar funções prontas, como, por exemplo, reverse;
+
+
+
+Console.Write("Digite o texto que quer inverter: ");
+string input = Console.ReadLine();//input com o texto que vai ser invertido
+char[] texto = input.ToCharArray(); //colocando todo o texto dentro do array por char
+int tam = texto.Length;
+
+for (int i = 0; i < tam / 2; i++)//for que percorre a metade do tamanho do array, trocando a ordem do texto
+{
+    char aux = texto[i]; //aux = char na posição i
+    texto[i] = texto[tam - 1 - i];  //o texto na posição i vai ser = tamanho do texto - 1 - i(contador do for)
+    //Primeiro exemplo = A = texto[ 5 - 1 - 0] > Então A vai pra posição 4
+    texto[tam - 1 - i] = aux;
+}
+string invertida = new string(texto); 
+Console.WriteLine(invertida);
